@@ -85,7 +85,6 @@ def do_connect():
 
 def web_serv():
     pins = [machine.Pin(i, machine.Pin.IN) for i in (0, 2, 4, 5, 12, 13, 14, 15)]
-    gc.collect()
     html = """<!DOCTYPE html>
     <html>
         <head> <title>ESP32 Pins</title> </head>
@@ -106,6 +105,7 @@ def web_serv():
     print('listening on', addr)
 
     while True:
+        #gc.collect()
         cl, addr = s.accept()
         print('client connected from', addr)
         cl_file = cl.makefile('rwb', 0)
@@ -117,18 +117,20 @@ def web_serv():
         response = html % '\n'.join(rows)
         cl.send(response)
         cl.close()
+        
 
 
-gc.collect()
 
 ip = do_connect()
+
+settime()
+_thread.start_new_thread(web_serv,())
+
 oled.text(ip, 0, 10)
 oled.text('Hello, World 3!', 0, 20)
-            
-oled.show()
+tm =str(machine.RTC().datetime()[4]) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
+#oled.text(tm, 0, 30)
 
 demo(np)
-print (settime())
-gc.collect()
-_thread.start_new_thread(web_serv,())
+oled.show()
 
