@@ -8,14 +8,30 @@ import machine
 import network
 import socket
 from machine import Pin, I2C
+import micropython
 import ssd1306
 from time import sleep
 import time
 from ntptime import settime 
 import neopixel
+import _thread
+import gc
 
 
 np = neopixel.NeoPixel(machine.Pin(4), 6)
+
+
+# ESP32 Pin assignment 
+i2c = I2C(-1, scl=Pin(17), sda=Pin(5))
+
+# ESP8266 Pin assignment
+#i2c = I2C(-1, scl=Pin(5), sda=Pin(4))
+
+oled_width = 128
+oled_height = 64
+oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
+
+
 
 def demo(np):
     n = np.n
@@ -54,23 +70,6 @@ def demo(np):
         np[i] = (0, 0, 0)
     np.write()
 
-def disp(ip):
-    # ESP32 Pin assignment 
-    i2c = I2C(-1, scl=Pin(17), sda=Pin(5))
-
-    # ESP8266 Pin assignment
-    #i2c = I2C(-1, scl=Pin(5), sda=Pin(4))
-
-    oled_width = 128
-    oled_height = 64
-    oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
-
-    oled.text('Hello, World 1!', 0, 0)
-    oled.text(ip, 0, 10)
-    oled.text('Hello, World 3!', 0, 20)
-            
-    oled.show()
-
 
 def do_connect():
     sta_if = network.WLAN(network.STA_IF)
@@ -86,13 +85,15 @@ def do_connect():
 
 def web_serv():
     pins = [machine.Pin(i, machine.Pin.IN) for i in (0, 2, 4, 5, 12, 13, 14, 15)]
-
+    gc.collect()
     html = """<!DOCTYPE html>
     <html>
         <head> <title>ESP32 Pins</title> </head>
         <body> <h1>ESP32 Pins</h1>
             <table border="1"> <tr><th>Pin</th><th>Value</th></tr> %s </table>
         </body>
+         <h3>Pick a Color:</h3>
+    <div style="margin:auto;width:236px;">
     </html>
     """
 
@@ -118,11 +119,16 @@ def web_serv():
         cl.close()
 
 
-
+gc.collect()
 
 ip = do_connect()
-disp(ip)
+oled.text(ip, 0, 10)
+oled.text('Hello, World 3!', 0, 20)
+            
+oled.show()
+
 demo(np)
 print (settime())
-web_serv()
+gc.collect()
+_thread.start_new_thread(web_serv,())
 
