@@ -24,8 +24,6 @@ np = neopixel.NeoPixel(machine.Pin(4), 6)
 # ESP32 Pin assignment 
 i2c = I2C(-1, scl=Pin(17), sda=Pin(5))
 
-# ESP8266 Pin assignment
-#i2c = I2C(-1, scl=Pin(5), sda=Pin(4))
 
 oled_width = 128
 oled_height = 64
@@ -105,7 +103,7 @@ def web_serv():
     print('listening on', addr)
 
     while True:
-        #gc.collect()
+        time.sleep(.05)
         cl, addr = s.accept()
         print('client connected from', addr)
         cl_file = cl.makefile('rwb', 0)
@@ -123,14 +121,18 @@ def web_serv():
 
 ip = do_connect()
 
-settime()
+
+
+demo(np)
 _thread.start_new_thread(web_serv,())
+time.sleep(2)
+settime()
+
 
 oled.text(ip, 0, 10)
 oled.text('Hello, World 3!', 0, 20)
-tm =str(machine.RTC().datetime()[4]) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
-#oled.text(tm, 0, 30)
-
-demo(np)
+tm =str(machine.RTC().datetime()[4]-4) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
+print (tm)
+oled.text(tm, 0, 30)
 oled.show()
 
