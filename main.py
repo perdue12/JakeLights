@@ -19,6 +19,7 @@ import gc
 import ure
 
 
+global np 
 np = neopixel.NeoPixel(machine.Pin(4), 6)
 
 
@@ -36,7 +37,7 @@ s.bind(addr)
 s.listen(1)
 
 
-def demo(np):
+def demo():
     n = np.n
 
     # cycle
@@ -74,6 +75,14 @@ def demo(np):
     np.write()
 
 
+def Convert(string): 
+    li = list(string.split(b","))
+    lo = []
+    j = 0
+    for i in li:
+        lo.append(int(i))
+        j += 1
+    return lo 
 
 
 def web_serv(s):
@@ -87,35 +96,59 @@ def web_serv(s):
     <div style="margin:auto;width:236px;">
     </html>
     """
-    regex = ure.compile('led\?')
+    regex = ure.compile('\(')
+    regex2 = ure.compile('\)')
+    regex3 = ure.compile('led')
+
         
     cl, addr = s.accept()
     print('client connected from', addr)
     cl_file = cl.makefile('rwb', 0)
     while True:
         line = cl_file.readline()
-        print(line)
-        print(regex.split(line)[-1])
+        #print(line)
+        if regex3.search(line):
+            out1 = regex.split(line)
+            #print(out1)
+            lightraw = regex2.split(out1[1])[0]
+            lightcmd = Convert(lightraw)
+            
         if not line or line == b'\r\n':
             break
     #response = html % '\n'.join(rows)
     cl.send(line)
     cl.close()
-    
+    return lightcmd
 
 
 
+def npset(lightcmd):
+    for i in range(lightcmd[0], lightcmd[1]+1):
+        np[i] = (lightcmd[2], lightcmd[3], lightcmd[4])
+    np.write()
 
-demo(np)
+
+
+oled.text('Booting...', 0, 10)
+oled.show()
+_thread.start_new_thread(demo, ())
 settime()
-while True:
-    web_serv(s)
-    #oled.text(ip, 0, 10)
+run = 1
+oled.fill(0)
+oled.show()
+while run:
+    lightcmd = web_serv(s)
+    print(lightcmd)
     tm =str(machine.RTC().datetime()[4]-4) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
     print (tm)
     oled.fill(0)
-    oled.text('Hello, World 3!', 0, 20)
+    oled.text('Light Show!', 0, 10)
+    oled.text('Last Command @:', 0, 20)
     oled.text(tm, 0, 30)
+    oled.text(str(lightcmd), 0, 40)
     oled.show()
+    npset(lightcmd)
     time.sleep(1)
+    run = 1
+
 
