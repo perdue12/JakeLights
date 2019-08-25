@@ -29,6 +29,10 @@ oled_width = 128
 oled_height = 64
 oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
 
+addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
+s = socket.socket()
+s.bind(addr)
+s.listen(1)
 
 
 def demo(np):
@@ -71,8 +75,7 @@ def demo(np):
 
 
 
-def web_serv():
-    pins = [machine.Pin(i, machine.Pin.IN) for i in (0, 2, 4, 5, 12, 13, 14, 15)]
+def web_serv(s):
     html = """<!DOCTYPE html>
     <html>
         <head> <title>ESP32 Pins</title> </head>
@@ -84,28 +87,18 @@ def web_serv():
     </html>
     """
 
-    addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
-
-    s = socket.socket()
-    s.bind(addr)
-    s.listen(1)
-
-    print('listening on', addr)
-
+    cl, addr = s.accept()
+    print('client connected from', addr)
+    cl_file = cl.makefile('rwb', 0)
     while True:
-        time.sleep(.05)
-        cl, addr = s.accept()
-        print('client connected from', addr)
-        cl_file = cl.makefile('rwb', 0)
-        while True:
-            line = cl_file.readline()
-            if not line or line == b'\r\n':
-                break
-        rows = ['<tr><td>%s</td><td>%d</td></tr>' % (str(p), p.value()) for p in pins]
-        response = html % '\n'.join(rows)
-        cl.send(response)
-        cl.close()
-        
+        line = cl_file.readline()
+        print(line)
+        if not line or line == b'\r\n':
+            break
+    #response = html % '\n'.join(rows)
+    cl.send(line)
+    cl.close()
+    
 
 
 
@@ -114,15 +107,15 @@ def web_serv():
 
 
 demo(np)
-#_thread.start_new_thread(web_serv,())
-time.sleep(2)
 settime()
-
-
-#oled.text(ip, 0, 10)
-oled.text('Hello, World 3!', 0, 20)
-tm =str(machine.RTC().datetime()[4]-4) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
-print (tm)
-oled.text(tm, 0, 30)
-oled.show()
+while True:
+    web_serv(s)
+    #oled.text(ip, 0, 10)
+    oled.text('Hello, World 3!', 0, 20)
+    tm =str(machine.RTC().datetime()[4]-4) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
+    print (tm)
+    oled.text('            ', 0, 30)
+    oled.text(tm, 0, 30)
+    oled.show()
+    time.sleep(1)
 
