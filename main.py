@@ -123,7 +123,7 @@ def web_serv(s):
 
 
 def npset(lightcmd):
-    for i in range(lightcmd[0], lightcmd[1]+1):
+    for i in range(lightcmd[0]-1, lightcmd[1]):
         np[i] = (lightcmd[2], lightcmd[3], lightcmd[4])
     np.write()
 
