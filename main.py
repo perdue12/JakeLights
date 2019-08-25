@@ -16,6 +16,7 @@ from ntptime import settime
 import neopixel
 import _thread
 import gc
+import ure
 
 
 np = neopixel.NeoPixel(machine.Pin(4), 6)
@@ -86,13 +87,15 @@ def web_serv(s):
     <div style="margin:auto;width:236px;">
     </html>
     """
-
+    regex = ure.compile('led\?')
+        
     cl, addr = s.accept()
     print('client connected from', addr)
     cl_file = cl.makefile('rwb', 0)
     while True:
         line = cl_file.readline()
         print(line)
+        print(regex.split(line)[-1])
         if not line or line == b'\r\n':
             break
     #response = html % '\n'.join(rows)
@@ -103,18 +106,15 @@ def web_serv(s):
 
 
 
-
-
-
 demo(np)
 settime()
 while True:
     web_serv(s)
     #oled.text(ip, 0, 10)
-    oled.text('Hello, World 3!', 0, 20)
     tm =str(machine.RTC().datetime()[4]-4) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
     print (tm)
-    oled.text('            ', 0, 30)
+    oled.fill(0)
+    oled.text('Hello, World 3!', 0, 20)
     oled.text(tm, 0, 30)
     oled.show()
     time.sleep(1)
