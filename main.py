@@ -17,6 +17,10 @@ import neopixel
 import _thread
 import gc
 import ure
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+log = logging.getLogger("LightShow")
 
 
 global np 
@@ -102,14 +106,14 @@ def web_serv(s):
 
         
     cl, addr = s.accept()
-    print('client connected from', addr)
+    log.info('client connected from: {}'.format(addr))
     cl_file = cl.makefile('rwb', 0)
     while True:
         line = cl_file.readline()
-        #print(line)
+        log.debug(line)
         if regex3.search(line):
             out1 = regex.split(line)
-            #print(out1)
+            log.debug(out1)
             lightraw = regex2.split(out1[1])[0]
             lightcmd = Convert(lightraw)
             
@@ -127,24 +131,36 @@ def npset(lightcmd):
         np[i] = (lightcmd[2], lightcmd[3], lightcmd[4])
     np.write()
 
+def nptset():
+    while True:
+        try:
+            settime()
+            log.debug("Timeset@{}".format(timeout()))
+        except:
+            log.warning("timeout exception")
+        time.sleep(20)
+
+def timeout():
+    tm =str("{:02d}:{:02d}:{:02d}".format(machine.RTC().datetime()[4]-4, machine.RTC().datetime()[5], machine.RTC().datetime()[6]))
+    return(tm)
 
 
 oled.text('Booting...', 0, 10)
 oled.show()
 _thread.start_new_thread(demo, ())
-settime()
+_thread.start_new_thread(nptset, ())
 run = 1
 oled.fill(0)
 oled.show()
 while run:
     lightcmd = web_serv(s)
-    print(lightcmd)
-    tm =str(machine.RTC().datetime()[4]-4) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
-    print (tm)
+    log.info(lightcmd)
+    #tm =str(machine.RTC().datetime()[4]-4) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
+    log.info('Time thru the loop: {}'.format(timeout()))
     oled.fill(0)
     oled.text('Light Show!', 0, 10)
     oled.text('Last Command @:', 0, 20)
-    oled.text(tm, 0, 30)
+    oled.text(timeout(), 0, 30)
     oled.text(str(lightcmd), 0, 40)
     oled.show()
     npset(lightcmd)
