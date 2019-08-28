@@ -9,7 +9,7 @@ import network
 import socket
 from machine import Pin, I2C
 import micropython
-import ssd1306
+# import ssd1306
 from time import sleep
 import time
 from ntptime import settime 
@@ -28,12 +28,12 @@ np = neopixel.NeoPixel(machine.Pin(4), 6)
 
 
 # ESP32 Pin assignment 
-i2c = I2C(-1, scl=Pin(17), sda=Pin(5))
+# i2c = I2C(-1, scl=Pin(17), sda=Pin(5))
 
 
-oled_width = 128
-oled_height = 64
-oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
+#oled_width = 128
+#oled_height = 64
+#oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
 
 addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
 s = socket.socket()
@@ -141,28 +141,28 @@ def nptset():
         time.sleep(20)
 
 def timeout():
-    tm =str("{:02d}:{:02d}:{:02d}".format(machine.RTC().datetime()[4]-4, machine.RTC().datetime()[5], machine.RTC().datetime()[6]))
+    tm =str("{}/{}/{} {:02d}:{:02d}:{:02d}".format(machine.RTC().datetime()[0],machine.RTC().datetime()[1], machine.RTC().datetime()[2], machine.RTC().datetime()[4]-4, machine.RTC().datetime()[5], machine.RTC().datetime()[6]))
     return(tm)
 
 
-oled.text('Booting...', 0, 10)
-oled.show()
+#oled.text('Booting...', 0, 10)
+#oled.show()
 _thread.start_new_thread(demo, ())
 _thread.start_new_thread(nptset, ())
 run = 1
-oled.fill(0)
-oled.show()
+#oled.fill(0)
+#oled.show()
 while run:
     lightcmd = web_serv(s)
     log.info(lightcmd)
     #tm =str(machine.RTC().datetime()[4]-4) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
     log.info('Time thru the loop: {}'.format(timeout()))
-    oled.fill(0)
-    oled.text('Light Show!', 0, 10)
-    oled.text('Last Command @:', 0, 20)
-    oled.text(timeout(), 0, 30)
-    oled.text(str(lightcmd), 0, 40)
-    oled.show()
+#    oled.fill(0)
+#    oled.text('Light Show!', 0, 10)
+#    oled.text('Last Command @:', 0, 20)
+#    oled.text(timeout(), 0, 30)
+#    oled.text(str(lightcmd), 0, 40)
+#    oled.show()
     npset(lightcmd)
     time.sleep(1)
     run = 1
