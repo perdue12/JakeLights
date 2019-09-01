@@ -1,46 +1,36 @@
-# This file is executed on every boot (including wake-boot from deepsleep)
-#import esp
-#esp.osdebug(None)
-#import webrepl
-#webrepl.start()
+# Test program for MicroPython asyncio
+# Author: David Perdue
+# Copyright David Perdue 2019
+# 
+# 
 
+import esp32
+import uasyncio as asyncio
+import neopixel
+import logging
 import machine
 import network
 import socket
 from machine import Pin, I2C
 import micropython
-# import ssd1306
 from time import sleep
 import time
 from ntptime import settime 
-import neopixel
-import _thread
 import gc
 import ure
 import logging
 
-
 logging.basicConfig(level=logging.DEBUG)
-log = logging.getLogger("LightShow")
-
+log = logging.getLogger("Testing")
 
 global np 
 np = neopixel.NeoPixel(machine.Pin(4), 6)
 
 
-# ESP32 Pin assignment 
-# i2c = I2C(-1, scl=Pin(17), sda=Pin(5))
-
-
-#oled_width = 128
-#oled_height = 64
-#oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
-
 addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
 s = socket.socket()
 s.bind(addr)
 s.listen(1)
-
 
 async def demo():
     n = np.n
@@ -51,7 +41,7 @@ async def demo():
             np[j] = (0, 0, 0)
         np[i % n] = (255, 255, 255)
         np.write()
-        time.sleep_ms(25)
+        await asyncio.sleep_ms(25)
 
     # bounce
     for i in range(4 * n):
@@ -62,7 +52,7 @@ async def demo():
         else:
             np[n - 1 - (i % n)] = (0, 0, 0)
         np.write()
-        time.sleep_ms(60)
+        await asyncio.sleep_ms(60)
 
     # fade in/out
     for i in range(0, 4 * 256, 8):
@@ -126,50 +116,54 @@ def web_serv(s):
     return lightcmd
 
 
-
 def npset(lightcmd):
     for i in range(lightcmd[0]-1, lightcmd[1]):
         np[i] = (lightcmd[2], lightcmd[3], lightcmd[4])
     np.write()
 
-def nptset():
+
+async def nptset():
     while True:
         try:
+            log.debug('{} : Timeset'.format(timeout()))
             settime()
             log.debug('{} : Timeset'.format(timeout()))
         except KeyboardInterrupt:
             raise
         except:
             log.warning('{} : timeout exception'.format(timeout()))
-        time.sleep(20)
+        await asyncio.sleep(3600)
+
 
 def timeout():
-    tm =str("{}/{}/{} {:02d}:{:02d}:{:02d}".format(machine.RTC().datetime()[0],machine.RTC().datetime()[1], machine.RTC().datetime()[2], machine.RTC().datetime()[4]-4, machine.RTC().datetime()[5], machine.RTC().datetime()[6]))
+    tm =str("{}/{}/{} {:02d}:{:02d}:{:02d}.{:06d}".format(machine.RTC().datetime()[0],machine.RTC().datetime()[1],
+                                                    machine.RTC().datetime()[2], machine.RTC().datetime()[4]-4, 
+                                                    machine.RTC().datetime()[5], machine.RTC().datetime()[6],
+                                                    machine.RTC().datetime()[7])
+                                                    )
     return(tm)
 
 
-
-#oled.text('Booting...', 0, 10)
-#oled.show()
-_thread.start_new_thread(demo, ())
-_thread.start_new_thread(nptset, ())
-
-run = 1
-#oled.fill(0)
-#oled.show()
-while run:
-    lightcmd = web_serv(s)
-    log.info('{} : {}'.format(timeout(), lightcmd))
-    #tm =str(machine.RTC().datetime()[4]-4) + ":" + str(machine.RTC().datetime()[5]) + ":" + str(machine.RTC().datetime()[6])
-    log.debug('{} : Time thru the loop'.format(timeout()))
-#    oled.fill(0)
-#    oled.text('Light Show!', 0, 10)
-#    oled.text('Last Command @:', 0, 20)
-#    oled.text(timeout(), 0, 30)
-#    oled.text(str(lightcmd), 0, 40)
-#    oled.show()
-    npset(lightcmd)
-    time.sleep(1)
-    run = 1
+async def test():
+    i = 0
+    while True:
+        log.debug('{} : async loop count {}'.format(timeout(), i))
+        i += 1
+        await asyncio.sleep_ms(0)
 
 
+async def mainloop():
+    while True:
+        lightcmd = web_serv(s)
+        log.info('{} : {}'.format(timeout(), lightcmd))
+        log.debug('{} : Time thru the loop'.format(timeout()))
+        npset(lightcmd)
+        await asyncio.sleep(1)
+
+
+loop = asyncio.get_event_loop()
+loop.create_task(nptset())
+#loop.create_task(test())
+loop.create_task(demo())
+
+loop.run_forever()
