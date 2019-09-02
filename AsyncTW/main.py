@@ -104,10 +104,8 @@ class lightShow():
     
     def get(self, data):
         global lightcmd
-        print(lightcmd)
         lightcmd = data['lightcmd'].split(',')
         lightcmd = [int(i) for i in lightcmd]
-        print(lightcmd)
         return('Lights set to: {}'.format(data['lightcmd']))
     
     def not_exists(self):
@@ -209,7 +207,7 @@ async def changelights():
         log.debug('{} : {}'.format(timeout(), lightcmd))
         npset()
         np.write()
-        await asyncio.sleep(1)
+        await asyncio.sleep(.1)
         
 
 if __name__ == '__main__':
