@@ -60,15 +60,16 @@ class CustomersList():
 
 # Simple helper to return message and error code
 def not_found():
-    # Return message and HTTP response "404 Not Found"
-    return {'message': 'no such customer'}, 404
+    page = '<!doctype html><html lang="en"><form> <input class="MyButton" type="button" value="Your Text Here" onclick="window.location.href=\'http://www.hyperlinkcode.com/button-links.php\'" /> </form></html>'
+    return page
 
 
 # Detailed information about given customer
 class Customer():
 
     def not_exists(self):
-        return {'message': 'no such customer'}, 404
+        page = '<form> <input class="MyButton" type="button" value="Your Text Here" onclick="window.location.href=\'http://www.hyperlinkcode.com/button-links.php\'" /> </form>'
+        return page
 
     def get(self, data, user_id):
         """Get detailed information about given customer"""
@@ -95,6 +96,13 @@ def run():
     # Create web server application
     app = tinyweb.webserver()
     # Add our resources
+    
+    @app.route('/')
+    @app.route('/index.html')
+    async def index(req, resp):
+        # Just send file
+        await resp.send_file('static/index.simple.html')
+    
     app.add_resource(CustomersList, '/customers')
     app.add_resource(Customer, '/customers/<user_id>')
     app.add_resource(lightShow, '/light')
