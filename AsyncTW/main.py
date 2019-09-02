@@ -207,7 +207,7 @@ async def changelights():
         log.debug('{} : {}'.format(timeout(), lightcmd))
         npset()
         np.write()
-        await asyncio.sleep(.1)
+        await asyncio.sleep(.5)
         
 
 if __name__ == '__main__':
