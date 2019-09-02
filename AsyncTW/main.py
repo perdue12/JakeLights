@@ -25,7 +25,7 @@ import tinyweb
 
 
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.ERROR)
 log = logging.getLogger("Testing")
 
 global np
