@@ -4,6 +4,8 @@ MIT license
 (C) Konstantin Belyalov 2017-2018
 """
 
+
+
 import esp32
 import uasyncio as asyncio
 import neopixel
@@ -26,7 +28,9 @@ import tinyweb
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger("Testing")
 
-global np 
+global np
+
+lightcmd = [1,6,5,5,5]
 np = neopixel.NeoPixel(machine.Pin(4), 6)
 
 
@@ -93,10 +97,39 @@ def run():
     # Add our resources
     app.add_resource(CustomersList, '/customers')
     app.add_resource(Customer, '/customers/<user_id>')
+    app.add_resource(lightShow, '/light')
     app.run(host='0.0.0.0', port=8081, loop_forever=False)
 
+class lightShow():
+    
+    def get(self, data):
+        global lightcmd
+        print(lightcmd)
+        lightcmd = data['lightcmd'].split(',')
+        lightcmd = [int(i) for i in lightcmd]
+        print(lightcmd)
+        return('Lights set to: {}'.format(data['lightcmd']))
+    
+    def not_exists(self):
+        return {'message': 'no such customer'}, 404
 
-async def demo():
+    def put(self, data, user_id):
+        """Update given customer"""
+        if user_id not in db:
+            return not_found()
+        db[user_id] = data
+        return {'message': 'updated'}
+
+    def delete(self, data, user_id):
+        """Delete customer"""
+        if user_id not in db:
+            return not_found()
+        del db[user_id]
+        return {'message': 'successfully deleted'}
+
+
+
+def demo():
     n = np.n
 
     # cycle
@@ -105,7 +138,7 @@ async def demo():
             np[j] = (0, 0, 0)
         np[i % n] = (255, 255, 255)
         np.write()
-        await asyncio.sleep_ms(25)
+        time.sleep(.025)
 
     # bounce
     for i in range(4 * n):
@@ -116,7 +149,7 @@ async def demo():
         else:
             np[n - 1 - (i % n)] = (0, 0, 0)
         np.write()
-        await asyncio.sleep_ms(60)
+        time.sleep(.060)
 
     # fade in/out
     for i in range(0, 4 * 256, 8):
@@ -145,10 +178,9 @@ def Convert(string):
 
 
 
-def npset(lightcmd):
+def npset():
     for i in range(lightcmd[0]-1, lightcmd[1]):
         np[i] = (lightcmd[2], lightcmd[3], lightcmd[4])
-    np.write()
 
 
 async def nptset():
@@ -172,15 +204,21 @@ def timeout():
                                                     )
     return(tm)
 
-
+async def changelights():
+    while True:
+        log.debug('{} : {}'.format(timeout(), lightcmd))
+        npset()
+        np.write()
+        await asyncio.sleep(1)
+        
 
 if __name__ == '__main__':
+    
     loop = asyncio.get_event_loop()
     run()
     loop.create_task(nptset())
-    #loop.create_task(test())
-    loop.create_task(demo())
-
+    loop.create_task(changelights())
+    
     loop.run_forever()
 
     # To test your server run in terminal:
