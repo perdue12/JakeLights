@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>C:\Users\lab\Documents\espDisp\espDisp\espDisp.sch</source>
+    <date>9/29/2019 4:40:09 PM</date>
+    <tool>Eeschema (5.1.4)-1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Jake Light Controller</title>
+        <company/>
+        <rev>A</rev>
+        <date>2019-09-28</date>
+        <source>espDisp.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="U1">
+      <value>AZ1117CH-3_3TRG1</value>
+      <footprint>digikey-footprints:SOT-223</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/AZ1117C.pdf</datasheet>
+      <fields>
+        <field name="Category">Integrated Circuits (ICs)</field>
+        <field name="DK_Datasheet_Link">https://www.diodes.com/assets/Datasheets/AZ1117C.pdf</field>
+        <field name="DK_Detail_Page">/product-detail/en/diodes-incorporated/AZ1117CH-3.3TRG1/AZ1117CH-3.3TRG1DICT-ND/4505206</field>
+        <field name="Description">IC REG LINEAR 3.3V 800MA SOT223</field>
+        <field name="Digi-Key_PN">AZ1117CH-3.3TRG1DICT-ND</field>
+        <field name="Family">PMIC - Voltage Regulators - Linear</field>
+        <field name="MPN">AZ1117CH-3.3TRG1</field>
+        <field name="Manufacturer">Diodes Incorporated</field>
+        <field name="Status">Active</field>
+      </fields>
+      <libsource lib="dk_PMIC-Voltage-Regulators-Linear" part="AZ1117CH-3_3TRG1" description="IC REG LINEAR 3.3V 800MA SOT223"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D8B7CC3</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>1.0u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D8BA200</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>1.0u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D8BA92C</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>USB_B_Micro</value>
+      <footprint>Connector_USB:USB_Micro-B_Molex-105017-0001</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="USB_B_Micro" description="USB Micro Type B connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9323F5</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>0022232031</value>
+      <footprint>digikey-footprints:PinHeader_1x3_P2.54mm_Drill1.02mm</footprint>
+      <datasheet>https://www.molex.com/pdm_docs/sd/022232031_sd.pdf</datasheet>
+      <fields>
+        <field name="Category">Connectors, Interconnects</field>
+        <field name="DK_Datasheet_Link">https://www.molex.com/pdm_docs/sd/022232031_sd.pdf</field>
+        <field name="DK_Detail_Page">/product-detail/en/molex/0022232031/WM4201-ND/26669</field>
+        <field name="Description">CONN HEADER VERT 3POS 2.54MM</field>
+        <field name="Digi-Key_PN">WM4201-ND</field>
+        <field name="Family">Rectangular Connectors - Headers, Male Pins</field>
+        <field name="MPN">0022232031</field>
+        <field name="Manufacturer">Molex</field>
+        <field name="Status">Active</field>
+      </fields>
+      <libsource lib="dk_Rectangular-Connectors-Headers-Male-Pins" part="0022232031" description="CONN HEADER VERT 3POS 2.54MM"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D96DDC7</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D98F1C7</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9909A3</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>1.0u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D990DC9</tstamp>
+    </comp>
+    <comp ref="SW1">
+      <value>BOOT</value>
+      <footprint>digikey-footprints:Switch_Tactile_SMD_B3U-1000P</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Switch" part="SW_DIP_x01" description="1x DIP Switch, Single Pole Single Throw (SPST) switch, small symbol"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D997D61</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9A4859</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9A486D</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>1.0u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9A4877</tstamp>
+    </comp>
+    <comp ref="SW2">
+      <value>EN</value>
+      <footprint>digikey-footprints:Switch_Tactile_SMD_B3U-1000P</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Switch" part="SW_DIP_x01" description="1x DIP Switch, Single Pole Single Throw (SPST) switch, small symbol"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9A4891</tstamp>
+    </comp>
+    <comp ref="Q1">
+      <value>BC817-25-TP</value>
+      <footprint>digikey-footprints:SOT-23-3</footprint>
+      <datasheet>https://www.mccsemi.com/pdf/Products/BC817-16~BC817-40(SOT-23).pdf</datasheet>
+      <fields>
+        <field name="Category">Discrete Semiconductor Products</field>
+        <field name="DK_Datasheet_Link">https://www.mccsemi.com/pdf/Products/BC817-16~BC817-40(SOT-23).pdf</field>
+        <field name="DK_Detail_Page">/product-detail/en/micro-commercial-co/BC817-25-TP/BC817-25-TPMSCT-ND/1960198</field>
+        <field name="Description">TRANS NPN 45V 0.8A SOT-23</field>
+        <field name="Digi-Key_PN">BC817-25-TPMSCT-ND</field>
+        <field name="Family">Transistors - Bipolar (BJT) - Single</field>
+        <field name="MPN">BC817-25-TP</field>
+        <field name="Manufacturer">Micro Commercial Co</field>
+        <field name="Status">Active</field>
+      </fields>
+      <libsource lib="dk_Transistors-Bipolar-BJT-Single" part="BC817-25-TP" description="TRANS NPN 45V 0.8A SOT-23"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9B217F</tstamp>
+    </comp>
+    <comp ref="Q2">
+      <value>BC817-25-TP</value>
+      <footprint>digikey-footprints:SOT-23-3</footprint>
+      <datasheet>https://www.mccsemi.com/pdf/Products/BC817-16~BC817-40(SOT-23).pdf</datasheet>
+      <fields>
+        <field name="Category">Discrete Semiconductor Products</field>
+        <field name="DK_Datasheet_Link">https://www.mccsemi.com/pdf/Products/BC817-16~BC817-40(SOT-23).pdf</field>
+        <field name="DK_Detail_Page">/product-detail/en/micro-commercial-co/BC817-25-TP/BC817-25-TPMSCT-ND/1960198</field>
+        <field name="Description">TRANS NPN 45V 0.8A SOT-23</field>
+        <field name="Digi-Key_PN">BC817-25-TPMSCT-ND</field>
+        <field name="Family">Transistors - Bipolar (BJT) - Single</field>
+        <field name="MPN">BC817-25-TP</field>
+        <field name="Manufacturer">Micro Commercial Co</field>
+        <field name="Status">Active</field>
+      </fields>
+      <libsource lib="dk_Transistors-Bipolar-BJT-Single" part="BC817-25-TP" description="TRANS NPN 45V 0.8A SOT-23"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9B38CE</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>10K</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9B4C28</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>10K</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9B5E32</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>47u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9C804C</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>110</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9E27ED</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9E3CE3</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>110</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9F3308</tstamp>
+    </comp>
+    <comp ref="D4">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9F3312</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>110</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9F73DC</tstamp>
+    </comp>
+    <comp ref="D5">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9F73E6</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>110</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9FB6B4</tstamp>
+    </comp>
+    <comp ref="D6">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D9FB6BE</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>110</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DA02EB2</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0805_2012Metric</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DA02EBC</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>ESP32-WROVER</value>
+      <footprint>esp32-wrover:ESP32-WROVER</footprint>
+      <libsource lib="esp32-wrover" part="ESP32-WROVER" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D8F7BDC</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>FT231XS-U</value>
+      <footprint>digikey-footprints:SSOP-20_W3.9mm</footprint>
+      <datasheet>http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT231X.pdf</datasheet>
+      <fields>
+        <field name="Category">Integrated Circuits (ICs)</field>
+        <field name="DK_Datasheet_Link">http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT231X.pdf</field>
+        <field name="DK_Detail_Page">/product-detail/en/ftdi-future-technology-devices-international-ltd/FT231XS-U/768-1156-5-ND/3749471</field>
+        <field name="Description">IC USB SERIAL FULL UART 20SSOP</field>
+        <field name="Digi-Key_PN">768-1156-5-ND</field>
+        <field name="Family">Interface - Controllers</field>
+        <field name="MPN">FT231XS-U</field>
+        <field name="Manufacturer">FTDI, Future Technology Devices International Ltd</field>
+        <field name="Status">Active</field>
+      </fields>
+      <libsource lib="dk_Interface-Controllers" part="FT231XS-U" description="IC USB SERIAL FULL UART 20SSOP"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D921152</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="USB_B_Micro">
+      <aliases>
+        <alias>USB_B_Mini</alias>
+      </aliases>
+      <description>USB Micro Type B connector</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>USB*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">USB_B_Micro</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBUS" type="power_out"/>
+        <pin num="2" name="D-" type="passive"/>
+        <pin num="3" name="D+" type="passive"/>
+        <pin num="4" name="ID" type="passive"/>
+        <pin num="5" name="GND" type="power_out"/>
+        <pin num="6" name="Shield" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_DIP_x01">
+      <description>1x DIP Switch, Single Pole Single Throw (SPST) switch, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>SW?DIP?x1*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_DIP_x01</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="dk_Interface-Controllers" part="FT231XS-U">
+      <description>IC USB SERIAL FULL UART 20SSOP</description>
+      <docs>http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT231X.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">FT231XS-U</field>
+        <field name="Footprint">digikey-footprints:SSOP-20_W3.9mm</field>
+        <field name="Datasheet">http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT231X.pdf</field>
+        <field name="Digi-Key_PN">768-1156-5-ND</field>
+        <field name="MPN">FT231XS-U</field>
+        <field name="Category">Integrated Circuits (ICs)</field>
+        <field name="Family">Interface - Controllers</field>
+        <field name="DK_Datasheet_Link">http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT231X.pdf</field>
+        <field name="DK_Detail_Page">/product-detail/en/ftdi-future-technology-devices-international-ltd/FT231XS-U/768-1156-5-ND/3749471</field>
+        <field name="Description">IC USB SERIAL FULL UART 20SSOP</field>
+        <field name="Manufacturer">FTDI, Future Technology Devices International Ltd</field>
+        <field name="Status">Active</field>
+      </fields>
+      <pins>
+        <pin num="1" name="DTR" type="output"/>
+        <pin num="2" name="RTS" type="output"/>
+        <pin num="3" name="VCCIO" type="power_in"/>
+        <pin num="4" name="RXD" type="input"/>
+        <pin num="5" name="RI" type="input"/>
+        <pin num="6" name="GND" type="power_in"/>
+        <pin num="7" name="DSR" type="input"/>
+        <pin num="8" name="DCD" type="input"/>
+        <pin num="9" name="CTS" type="input"/>
+        <pin num="10" name="CBUS2" type="BiDi"/>
+        <pin num="11" name="USBDP" type="input"/>
+        <pin num="12" name="USBDM" type="input"/>
+        <pin num="13" name="3V3OUT" type="passive"/>
+        <pin num="14" name="RESET" type="input"/>
+        <pin num="15" name="VCC" type="power_in"/>
+        <pin num="16" name="GND" type="power_in"/>
+        <pin num="17" name="CBUS1" type="BiDi"/>
+        <pin num="18" name="CBUS0" type="BiDi"/>
+        <pin num="19" name="CBUS3" type="BiDi"/>
+        <pin num="20" name="TXD" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="dk_PMIC-Voltage-Regulators-Linear" part="AZ1117CH-3_3TRG1">
+      <description>IC REG LINEAR 3.3V 800MA SOT223</description>
+      <docs>https://www.diodes.com/assets/Datasheets/AZ1117C.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AZ1117CH-3_3TRG1</field>
+        <field name="Footprint">digikey-footprints:SOT-223</field>
+        <field name="Datasheet">https://www.diodes.com/assets/Datasheets/AZ1117C.pdf</field>
+        <field name="Digi-Key_PN">AZ1117CH-3.3TRG1DICT-ND</field>
+        <field name="MPN">AZ1117CH-3.3TRG1</field>
+        <field name="Category">Integrated Circuits (ICs)</field>
+        <field name="Family">PMIC - Voltage Regulators - Linear</field>
+        <field name="DK_Datasheet_Link">https://www.diodes.com/assets/Datasheets/AZ1117C.pdf</field>
+        <field name="DK_Detail_Page">/product-detail/en/diodes-incorporated/AZ1117CH-3.3TRG1/AZ1117CH-3.3TRG1DICT-ND/4505206</field>
+        <field name="Description">IC REG LINEAR 3.3V 800MA SOT223</field>
+        <field name="Manufacturer">Diodes Incorporated</field>
+        <field name="Status">Active</field>
+      </fields>
+      <pins>
+        <pin num="1" name="ADJ/GND" type="power_in"/>
+        <pin num="2" name="OUT" type="power_out"/>
+        <pin num="3" name="IN" type="power_in"/>
+        <pin num="4" name="VOUT" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="dk_Rectangular-Connectors-Headers-Male-Pins" part="0022232031">
+      <description>CONN HEADER VERT 3POS 2.54MM</description>
+      <docs>https://www.molex.com/pdm_docs/sd/022232031_sd.pdf</docs>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">0022232031</field>
+        <field name="Footprint">digikey-footprints:PinHeader_1x3_P2.54mm_Drill1.02mm</field>
+        <field name="Datasheet">https://www.molex.com/pdm_docs/sd/022232031_sd.pdf</field>
+        <field name="Digi-Key_PN">WM4201-ND</field>
+        <field name="MPN">0022232031</field>
+        <field name="Category">Connectors, Interconnects</field>
+        <field name="Family">Rectangular Connectors - Headers, Male Pins</field>
+        <field name="DK_Datasheet_Link">https://www.molex.com/pdm_docs/sd/022232031_sd.pdf</field>
+        <field name="DK_Detail_Page">/product-detail/en/molex/0022232031/WM4201-ND/26669</field>
+        <field name="Description">CONN HEADER VERT 3POS 2.54MM</field>
+        <field name="Manufacturer">Molex</field>
+        <field name="Status">Active</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="dk_Transistors-Bipolar-BJT-Single" part="BC817-25-TP">
+      <description>TRANS NPN 45V 0.8A SOT-23</description>
+      <docs>https://www.mccsemi.com/pdf/Products/BC817-16~BC817-40(SOT-23).pdf</docs>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">BC817-25-TP</field>
+        <field name="Footprint">digikey-footprints:SOT-23-3</field>
+        <field name="Datasheet">https://www.mccsemi.com/pdf/Products/BC817-16~BC817-40(SOT-23).pdf</field>
+        <field name="Digi-Key_PN">BC817-25-TPMSCT-ND</field>
+        <field name="MPN">BC817-25-TP</field>
+        <field name="Category">Discrete Semiconductor Products</field>
+        <field name="Family">Transistors - Bipolar (BJT) - Single</field>
+        <field name="DK_Datasheet_Link">https://www.mccsemi.com/pdf/Products/BC817-16~BC817-40(SOT-23).pdf</field>
+        <field name="DK_Detail_Page">/product-detail/en/micro-commercial-co/BC817-25-TP/BC817-25-TPMSCT-ND/1960198</field>
+        <field name="Description">TRANS NPN 45V 0.8A SOT-23</field>
+        <field name="Manufacturer">Micro Commercial Co</field>
+        <field name="Status">Active</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="E" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="esp32-wrover" part="ESP32-WROVER">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ESP32-WROVER</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="3V3" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="SENSOR_VP_IO36" type="input"/>
+        <pin num="5" name="SENSOR_VN_IO39" type="input"/>
+        <pin num="6" name="IO34" type="input"/>
+        <pin num="7" name="IO35" type="input"/>
+        <pin num="8" name="IO32_XTAL_32K_P" type="BiDi"/>
+        <pin num="9" name="IO33_XTAL_32K_N" type="BiDi"/>
+        <pin num="10" name="IO25" type="BiDi"/>
+        <pin num="11" name="IO26" type="BiDi"/>
+        <pin num="12" name="IO27" type="BiDi"/>
+        <pin num="13" name="IO14" type="BiDi"/>
+        <pin num="14" name="IO12" type="BiDi"/>
+        <pin num="15" name="GND" type="power_in"/>
+        <pin num="16" name="IO13" type="BiDi"/>
+        <pin num="17" name="SD2_IO9" type="BiDi"/>
+        <pin num="18" name="SD3_IO10" type="BiDi"/>
+        <pin num="19" name="CMD_IO11" type="BiDi"/>
+        <pin num="20" name="CLK_IO6" type="BiDi"/>
+        <pin num="21" name="SD0_IO7" type="BiDi"/>
+        <pin num="22" name="SD1_IO8" type="BiDi"/>
+        <pin num="23" name="IO15" type="BiDi"/>
+        <pin num="24" name="IO2" type="BiDi"/>
+        <pin num="25" name="IO0" type="BiDi"/>
+        <pin num="26" name="IO4" type="BiDi"/>
+        <pin num="27" name="IO16" type="NotConnected"/>
+        <pin num="28" name="IO17" type="NotConnected"/>
+        <pin num="29" name="IO5" type="BiDi"/>
+        <pin num="30" name="IO18" type="BiDi"/>
+        <pin num="31" name="IO19" type="BiDi"/>
+        <pin num="32" name="NC" type="NotConnected"/>
+        <pin num="33" name="IO21" type="BiDi"/>
+        <pin num="34" name="RXD0" type="input"/>
+        <pin num="35" name="TXD0" type="output"/>
+        <pin num="36" name="IO22" type="BiDi"/>
+        <pin num="37" name="IO23" type="BiDi"/>
+        <pin num="38" name="GND" type="power_in"/>
+        <pin num="39" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\share\kicad\library/Connector.lib</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\share\kicad\library/Device.lib</uri>
+    </library>
+    <library logical="Switch">
+      <uri>C:\Program Files\KiCad\share\kicad\library/Switch.lib</uri>
+    </library>
+    <library logical="dk_Interface-Controllers">
+      <uri>C:/Users/lab/Downloads/digikey-kicad-library-master/digikey-symbols/dk_Interface-Controllers.lib</uri>
+    </library>
+    <library logical="dk_PMIC-Voltage-Regulators-Linear">
+      <uri>C:/Users/lab/Downloads/digikey-kicad-library-master/digikey-symbols/dk_PMIC-Voltage-Regulators-Linear.lib</uri>
+    </library>
+    <library logical="dk_Rectangular-Connectors-Headers-Male-Pins">
+      <uri>C:/Users/lab/Downloads/digikey-kicad-library-master/digikey-symbols/dk_Rectangular-Connectors-Headers-Male-Pins.lib</uri>
+    </library>
+    <library logical="dk_Transistors-Bipolar-BJT-Single">
+      <uri>C:/Users/lab/Downloads/digikey-kicad-library-master/digikey-symbols/dk_Transistors-Bipolar-BJT-Single.lib</uri>
+    </library>
+    <library logical="esp32-wrover">
+      <uri>C:/Users/lab/Documents/KiCad/esp32-wrover.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="GND">
+      <node ref="C1" pin="2"/>
+      <node ref="SW2" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="U2" pin="6"/>
+      <node ref="J2" pin="5"/>
+      <node ref="R8" pin="2"/>
+      <node ref="R7" pin="2"/>
+      <node ref="C5" pin="2"/>
+      <node ref="J2" pin="6"/>
+      <node ref="U3" pin="1"/>
+      <node ref="U1" pin="1"/>
+      <node ref="U3" pin="39"/>
+      <node ref="U3" pin="38"/>
+      <node ref="U2" pin="16"/>
+      <node ref="U3" pin="15"/>
+      <node ref="J1" pin="3"/>
+      <node ref="SW1" pin="2"/>
+      <node ref="R2" pin="2"/>
+      <node ref="R11" pin="2"/>
+      <node ref="C7" pin="1"/>
+      <node ref="C6" pin="2"/>
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="2" name="Net-(D2-Pad1)">
+      <node ref="R1" pin="1"/>
+      <node ref="D2" pin="1"/>
+    </net>
+    <net code="3" name="Net-(D6-Pad1)">
+      <node ref="R11" pin="1"/>
+      <node ref="D6" pin="1"/>
+    </net>
+    <net code="4" name="LED4">
+      <node ref="D6" pin="2"/>
+      <node ref="U3" pin="11"/>
+    </net>
+    <net code="5" name="Net-(D5-Pad1)">
+      <node ref="R8" pin="1"/>
+      <node ref="D5" pin="1"/>
+    </net>
+    <net code="6" name="LED3">
+      <node ref="D5" pin="2"/>
+      <node ref="U3" pin="10"/>
+    </net>
+    <net code="7" name="Net-(U3-Pad20)">
+      <node ref="U3" pin="20"/>
+    </net>
+    <net code="8" name="Net-(U3-Pad19)">
+      <node ref="U3" pin="19"/>
+    </net>
+    <net code="9" name="Net-(U3-Pad18)">
+      <node ref="U3" pin="18"/>
+    </net>
+    <net code="10" name="Net-(U3-Pad17)">
+      <node ref="U3" pin="17"/>
+    </net>
+    <net code="11" name="Net-(U3-Pad16)">
+      <node ref="U3" pin="16"/>
+    </net>
+    <net code="12" name="Net-(U3-Pad13)">
+      <node ref="U3" pin="13"/>
+    </net>
+    <net code="13" name="Net-(U3-Pad12)">
+      <node ref="U3" pin="12"/>
+    </net>
+    <net code="14" name="Net-(U3-Pad9)">
+      <node ref="U3" pin="9"/>
+    </net>
+    <net code="15" name="Net-(U3-Pad8)">
+      <node ref="U3" pin="8"/>
+    </net>
+    <net code="16" name="Net-(U3-Pad5)">
+      <node ref="U3" pin="5"/>
+    </net>
+    <net code="17" name="Net-(U3-Pad4)">
+      <node ref="U3" pin="4"/>
+    </net>
+    <net code="18" name="Net-(U3-Pad21)">
+      <node ref="U3" pin="21"/>
+    </net>
+    <net code="19" name="Net-(U3-Pad22)">
+      <node ref="U3" pin="22"/>
+    </net>
+    <net code="20" name="Net-(U3-Pad30)">
+      <node ref="U3" pin="30"/>
+    </net>
+    <net code="21" name="Net-(U3-Pad31)">
+      <node ref="U3" pin="31"/>
+    </net>
+    <net code="22" name="Net-(U3-Pad33)">
+      <node ref="U3" pin="33"/>
+    </net>
+    <net code="23" name="Net-(U3-Pad36)">
+      <node ref="U3" pin="36"/>
+    </net>
+    <net code="24" name="Net-(U3-Pad37)">
+      <node ref="U3" pin="37"/>
+    </net>
+    <net code="25" name="+3V3">
+      <node ref="R9" pin="1"/>
+      <node ref="C2" pin="1"/>
+      <node ref="U2" pin="13"/>
+      <node ref="U2" pin="14"/>
+      <node ref="C7" pin="2"/>
+      <node ref="U2" pin="15"/>
+      <node ref="D2" pin="2"/>
+      <node ref="R3" pin="1"/>
+      <node ref="U3" pin="2"/>
+      <node ref="U2" pin="3"/>
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="26" name="Net-(U3-Pad23)">
+      <node ref="U3" pin="23"/>
+    </net>
+    <net code="27" name="Net-(U3-Pad14)">
+      <node ref="U3" pin="14"/>
+    </net>
+    <net code="28" name="Net-(U3-Pad29)">
+      <node ref="U3" pin="29"/>
+    </net>
+    <net code="29" name="Net-(U3-Pad24)">
+      <node ref="U3" pin="24"/>
+    </net>
+    <net code="30" name="Net-(D3-Pad1)">
+      <node ref="R2" pin="1"/>
+      <node ref="D3" pin="1"/>
+    </net>
+    <net code="31" name="Net-(D4-Pad1)">
+      <node ref="R7" pin="1"/>
+      <node ref="D4" pin="1"/>
+    </net>
+    <net code="32" name="Net-(U2-Pad18)">
+      <node ref="U2" pin="18"/>
+    </net>
+    <net code="33" name="Net-(U2-Pad19)">
+      <node ref="U2" pin="19"/>
+    </net>
+    <net code="34" name="Net-(U2-Pad17)">
+      <node ref="U2" pin="17"/>
+    </net>
+    <net code="35" name="USB_D+">
+      <node ref="J2" pin="3"/>
+      <node ref="U2" pin="11"/>
+    </net>
+    <net code="36" name="340TX">
+      <node ref="U3" pin="34"/>
+      <node ref="U2" pin="20"/>
+    </net>
+    <net code="37" name="Net-(U2-Pad10)">
+      <node ref="U2" pin="10"/>
+    </net>
+    <net code="38" name="Net-(U2-Pad9)">
+      <node ref="U2" pin="9"/>
+    </net>
+    <net code="39" name="Net-(U2-Pad8)">
+      <node ref="U2" pin="8"/>
+    </net>
+    <net code="40" name="Net-(U2-Pad7)">
+      <node ref="U2" pin="7"/>
+    </net>
+    <net code="41" name="Net-(U2-Pad5)">
+      <node ref="U2" pin="5"/>
+    </net>
+    <net code="42" name="Net-(U3-Pad32)">
+      <node ref="U3" pin="32"/>
+    </net>
+    <net code="43" name="LED2">
+      <node ref="U3" pin="7"/>
+      <node ref="D4" pin="2"/>
+    </net>
+    <net code="44" name="LED1">
+      <node ref="U3" pin="6"/>
+      <node ref="D3" pin="2"/>
+    </net>
+    <net code="45" name="RTS">
+      <node ref="R6" pin="2"/>
+      <node ref="Q1" pin="2"/>
+      <node ref="U2" pin="2"/>
+    </net>
+    <net code="46" name="DTR">
+      <node ref="R5" pin="2"/>
+      <node ref="U2" pin="1"/>
+      <node ref="Q2" pin="3"/>
+    </net>
+    <net code="47" name="Net-(U3-Pad28)">
+      <node ref="U3" pin="28"/>
+    </net>
+    <net code="48" name="Net-(U3-Pad27)">
+      <node ref="U3" pin="27"/>
+    </net>
+    <net code="49" name="340RX">
+      <node ref="U3" pin="35"/>
+      <node ref="U2" pin="4"/>
+    </net>
+    <net code="50" name="IO0">
+      <node ref="U3" pin="25"/>
+      <node ref="R3" pin="2"/>
+      <node ref="R4" pin="1"/>
+      <node ref="Q2" pin="2"/>
+    </net>
+    <net code="51" name="USB_D-">
+      <node ref="U2" pin="12"/>
+      <node ref="J2" pin="2"/>
+    </net>
+    <net code="52" name="Net-(J2-Pad4)">
+      <node ref="J2" pin="4"/>
+    </net>
+    <net code="53" name="LED_Din">
+      <node ref="J1" pin="2"/>
+      <node ref="U3" pin="26"/>
+    </net>
+    <net code="54" name="+5V">
+      <node ref="J2" pin="1"/>
+      <node ref="U1" pin="3"/>
+      <node ref="C1" pin="1"/>
+      <node ref="J1" pin="1"/>
+    </net>
+    <net code="55" name="Net-(U1-Pad4)">
+      <node ref="U1" pin="4"/>
+    </net>
+    <net code="56" name="Net-(Q2-Pad1)">
+      <node ref="Q2" pin="1"/>
+      <node ref="R6" pin="1"/>
+    </net>
+    <net code="57" name="Net-(Q1-Pad1)">
+      <node ref="R5" pin="1"/>
+      <node ref="Q1" pin="1"/>
+    </net>
+    <net code="58" name="EN">
+      <node ref="R9" pin="2"/>
+      <node ref="R10" pin="1"/>
+      <node ref="U3" pin="3"/>
+      <node ref="Q1" pin="3"/>
+    </net>
+    <net code="59" name="Net-(C5-Pad1)">
+      <node ref="SW1" pin="1"/>
+      <node ref="C5" pin="1"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="60" name="Net-(C6-Pad1)">
+      <node ref="R10" pin="2"/>
+      <node ref="C6" pin="1"/>
+      <node ref="SW2" pin="1"/>
+    </net>
+  </nets>
+</export>
